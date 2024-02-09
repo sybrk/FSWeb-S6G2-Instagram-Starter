@@ -43,9 +43,20 @@ const [aramaKriteri, setAramaKriteri] = useState("");
     setGonderiler(begeniData);
   };
 
+  const aramaSonucu = (e) => {
+      e.preventDefault();
+      if (aramaKriteri.length) {
+        let aramaData = gonderiler.filter(gonderi => gonderi.username.includes(aramaKriteri));
+        setGonderiler(aramaData);
+      } else {
+        setGonderiler(sahteVeri);
+      }
+
+  }
+
   return (
     <div className="App">
-      <AramaCubugu />
+      <AramaCubugu aramaKriteri = {aramaKriteri} kriterDegisimi = {setAramaKriteri} aramaSonucu = {aramaSonucu}/>
       <Gonderiler gonderiler = {gonderiler} gonderiyiBegen = {gonderiyiBegen}/>
       {/* Yukarıdaki metni projeye başladığınızda silin*/}
       {/* AramaÇubuğu ve Gönderiler'i render etmesi için buraya ekleyin */}
