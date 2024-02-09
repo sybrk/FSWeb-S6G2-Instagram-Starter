@@ -35,9 +35,12 @@ const [aramaKriteri, setAramaKriteri] = useState("");
         - aksi takdirde, sadece gönderi nesnesini değiştirmeden döndürün.
      */
     // burada önce gonderiler'i map ile güncelliyoruz sonra state'ini update ediyoruz.
-    gonderiler.map(gonderi => (gonderi.id === gonderiID) && gonderi.likes++);
-    setGonderiler(gonderiler);
-    console.log(gonderiler)
+    // burada map methodunu farklı bir değişkene atayıp sonra onu set edince sayfadaki rakam da güncellendi.
+    let begeniData = gonderiler.map(gonderi => {
+      (gonderi.id === gonderiID) && gonderi.likes++;
+      return gonderi;
+    });
+    setGonderiler(begeniData);
   };
 
   return (
